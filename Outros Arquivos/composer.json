@@ -1,0 +1,15 @@
+{
+    "name": "felipe/outrosarquivos",
+    "autoload": {
+        "psr-4": {
+            "\\app": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Felipe",
+            "email": "felipeoliveiradn2@gmail.com"
+        }
+    ],
+    "require": {}
+}

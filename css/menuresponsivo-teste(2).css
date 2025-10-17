@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*por padrão, o computador vai acrescentar o valor especificado para altura + o valor do padding ou do boarder (duplicando a medida). Para que isso não ocorra, essa propriedade é aplicada. */
+}
+
+.header {
+    display: flex;                    /*deixará logo e link um ao lado do outro*/
+    align-items: center;              /*deixará logo e link ao centro do eixo y*/
+    justify-content: space-between;   /*deixará logo e link às margens da tela, um à direita e o outro à esquerda, porque adicionou espaço no meio*/
+    padding: 1rem;                    /*rem deixará ajustável a fonte dentro do padding, de acordo com o que o usuário definir*/
+    height: 4.6rem;                   /*cada 1rem equivale a 16px - */
+    z-index: 1;
+    width: 100%;
+}
+
+.logo img{
+    width: 10vw;
+} 
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 3.5rem;           /*entre os itens do menu. equivale a 8px*/
+}
+
+.menu a {
+    display: block;
+    padding: 1rem;         /*aumenta a área clicável*/
+    color: #4D4C4C;
+    font-size: 16.5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+
+}
+
+.menu a:hover {
+    color: #80CC35
+}
+
+.label-menu,
+.checkbox {
+    display: none;
+    /*esconde os itens com a class acima*/
+}
+
+@media (max-width: 900px) {
+
+    /*ou seja, quando a tela for menor que 600px, quero que o menu desapareça para a*/
+
+    body{
+        background-color: #f2f3f1
+    }
+
+    .logo img{
+        width: 20vw;
+    } 
+
+    .header{
+        background-color: #80CC35;
+    }
+
+    .menu {
+        display: block;
+        position: absolute;             /*precisamos dessa position para fazer o menu cobrir a tela, mas abaixo do cabeçalho, tirando do fluxo do html e desbloqueando soutras prop., top, right, bottom, left*. Ele perde a largura de ponta a ponta, por isso precisamos defini-la. cf. 5 propriedade*/
+        top: 4.6rem;                    /*equivalente à altura do header*/
+        left: 0;
+        text-align: center;             /*alingou eixo x*/
+        width: 100%;
+        height: 0;                      /*começará com 0 na animação*/
+        transition: 0.5s;
+        background-color: #FAFAFF;
+        z-index: 1;                     /*para que ele fique acima de qualquer elemento do body*/
+        overflow-y: hidden;            
+        visibility: hidden;
+
+    }
+
+    .menu a {
+        padding: 1rem 0;  /*tira paddings da direita e da esquerda, deixando apenas acima e abaixo*/
+        margin-inline: 1rem;  
+        border-bottom: 0.1rem solid rgba(128, 205, 53, 0.3);
+        border-radius: 0;
+        font-size: 16.5px;
+    }
+
+    .menu a:hover{
+        background-color: #80CC35;
+        color: #FAFAFF;
+        border: 0.1rem solid rgb(2, 91, 75, 0.2);
+    }
+
+    .checkbox:checked~.menu {
+        /*pegue a classe checkbox e, quando estiver checada, entre com as configurações em .menu*/
+        /*mudaremos de display:none, como em .menu, para block quando o iput checkbox for clicado/checado. "~" seleciona elementos irmãos. Ou seja, a primeira e a segunda class tem que ter o mesmo pai/a mesma mãe div*/
+        height: calc(100vh - 4.6rem);
+        /*antes, menu estava com display none, e aqui, para display block. Essa transição n é animada pelo css. por isso, vamos voltar a usar o block lá e apagar o display dqui*/
+        visibility: visible;
+        /*como o display de menu tá block e eles ficam espostos um abaixo do outro, é necessário colocar o efeito de eles aparcerem só qnd checados*/
+        overflow-y: auto;
+        /*garante que, se a lista de itens aumentar, o usuário vai poder ainda dar skroll e ver os demais links*/
+    }
+
+    .label-menu {               /*agora estilizaremos a labe-menu que terá o hamburguer*/
+        display: flex;          /*para deixar o ícone ao lado da palavra "menu"*/
+        align-items: center;
+        gap: 0.9rem;
+        padding-block: 1rem;    /*padding-block acrescenta apenas na parte acima e abaixo*/
+        cursor: pointer;
+        color: #4D4C4C;
+        font-weight: bold;
+        font-size: 1.3rem;
+    }
+
+    .btnhamburguer {
+        border-top: 0.125rem /* =2px*/ solid;
+        width: 1.25rem  /*= 20px*/;
+    }
+
+    /*fazer hamburger com spam*/
+
+    
+    /*demais linhas*/
+    .btnhamburguer::after, .btnhamburguer::before {
+
+        content: "";
+        display: block;
+        /*por padrão, as pseudo-classes são inline*/
+        width: 1.25rem;
+        height: 0.125rem;
+        background-color: #4D4C4C;
+        margin-top: 0.3rem /*= 5px*/;
+        position:relative;
+        transition: 0.3s;
+    }
+
+    .checkbox:checked ~ .label-menu .btnhamburguer{
+        border-top-color: transparent;
+    }
+
+    .checkbox:checked ~ .label-menu .btnhamburguer::before{
+        transform: rotate(135deg);
+
+    }
+
+    .checkbox:checked ~ .label-menu .btnhamburguer::after{
+        transform: rotate(-135deg);
+        top:-0.4rem;                             /*para "top" funcionar precisamos acrescentar position:relative em position:relative no pseudoelem*/
+    }
+
+
+}
