@@ -22,7 +22,7 @@ body {
 }
 
 .logo img {
-    width: 140px;
+    width: 120px;
     margin-left: 20%;
 }
 
@@ -136,7 +136,8 @@ section {
 
 .img-home img {
     width: 85%;
-    height: auto;
+    height: auto;   
+
 }
 
 .footer {
