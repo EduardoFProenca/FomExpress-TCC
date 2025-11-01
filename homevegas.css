@@ -15,14 +15,14 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    height: 4.6rem;
+    min-height: 4.6rem;
     position: fixed;
     width: 100vw;
     z-index: 1;
 }
 
 .logo img {
-    width: 140px;
+    width: 120px;
     margin-left: 20%;
 }
 
@@ -30,6 +30,7 @@ body {
     list-style: none;
     display: flex;
     gap: 4.0rem;
+    margin-right: 2rem;
 }
 
 .menu a {
@@ -64,6 +65,7 @@ section {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     grid-gap: 3rem;
+
 }
 
 .texto-home .p1 {
