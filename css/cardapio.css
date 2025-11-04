@@ -1,4 +1,4 @@
-d* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,6 +23,20 @@ h1 {
     font-size: 85px;
 }
 
+.main-title {
+    width: 97%;  /* Quase a largura total */
+    max-width: 1200px;  
+    margin: 30px auto;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    color: #046f6f;
+    line-height: 1.2;  
+    padding: 0 5px;  
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;  /* Impede a quebra de linha */
+    overflow: hidden;  
+    text-overflow: ellipsis;
+}
 .header {
     display: flex;
     align-items: center;
