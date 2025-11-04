@@ -6,10 +6,10 @@
     <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="../css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="/img/logo/Logo-Fomexpress.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/logo/Logo-Fomexpress.png" type="image/x-icon">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     <header class="header">
         <!-- Localização do logo, precisa estar igual em todas as páginas-->
         <div class="logo">
-            <img src="/img/logo/Logo-Fomexpress.png" />
+            <img src="../img/logo/Logo-Fomexpress.png" />
         </div>
         <br>
 
@@ -30,12 +30,44 @@
             </label>
 
             <ul class="menu">
-                <li><a href="/html/home.html"> Home </a></li>
-                <li><a href="/html/cardapio.html"> Cardápio </a></li>
-                <li><a href="/html/quemsomos.html"> Quem somos </a></li>
-                <li><a href="/html/espaco.html"> Nosso espaço </a></li>
+                <li><a href="../html/home.html"> Home </a></li>
+                <li><a href="../html/cardapio.html"> Cardápio </a></li>
+                <li><a href="../html/quemsomos.html"> Quem somos </a></li>
+                <li><a href="../html/espaco.html"> Nosso espaço </a></li>
             </ul>
-            
+            <!-- Perfil do usuário (aparece no menu mobile) -->
+<!-- Perfil do usuário (aparece no menu mobile) -->
+<li class="user-profile">
+    <div class="user-circle" id="userCircle">
+        <i class="fa fa-user"></i>
+    </div>
+    
+    <!-- DROPDOWN PARA USUÁRIO NÃO LOGADO -->
+    <div class="user-dropdown" id="userDropdownGuest">
+        <div class="dropdown-header">
+            <p>Bem-vindo!</p>
+            <span>Faça login ou cadastre-se</span>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-sign-in"></i> Entrar</a></li>
+            <li><a href="../conta/config/conexao.php"><i class="fa fa-user-plus"></i> Cadastrar</a></li>
+        </ul>
+    </div>
+    
+    <!-- DROPDOWN PARA USUÁRIO LOGADO -->
+    <div class="user-dropdown" id="userDropdownLogged" style="display: none;">
+        <div class="dropdown-header">
+            <p>João Silva</p>
+            <span>joao.silva@email.com</span>
+        </div>
+        <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-user"></i> Minha Conta</a></li>
+            <li><a href="#"><i class="fa fa-history"></i> Histórico</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a href="#" id="btnLogout"><i class="fa fa-sign-out"></i> Sair</a></li>
+        </ul>
+    </div>
+</li>
         </nav>
 
     </header>
@@ -61,7 +93,7 @@
         </div>
 
         <div class="img-home">
-            <img src="/img/backgrounds/comida/Home.jpg" alt="John" style="width:100%">
+            <img src="../img/backgrounds/comida/Home.jpg" alt="John" style="width:100%">
         </div>
 
         <div class="empurra"></div>
@@ -81,6 +113,76 @@
         </p>
     </div>
 
+<script>
+    const userCircle = document.getElementById('userCircle');
+    const userDropdownGuest = document.getElementById('userDropdownGuest');
+    const userDropdownLogged = document.getElementById('userDropdownLogged');
+    const btnLogout = document.getElementById('btnLogout');
+    
+    // VERIFICAR SE O USUÁRIO ESTÁ LOGADO
+    // Altere esta variável para true quando o usuário fizer login
+    let isUserLoggedIn = false; // false = não logado, true = logado
+    
+    // Função para mostrar o dropdown correto
+    function updateUserMenu() {
+        if (isUserLoggedIn) {
+            userDropdownGuest.style.display = 'none';
+            userDropdownLogged.style.display = 'block';
+        } else {
+            userDropdownGuest.style.display = 'block';
+            userDropdownLogged.style.display = 'none';
+        }
+    }
+    
+    // Atualizar menu ao carregar a página
+    updateUserMenu();
+    
+    // Toggle do dropdown ao clicar no círculo
+    userCircle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        if (isUserLoggedIn) {
+            userDropdownLogged.classList.toggle('active');
+        } else {
+            userDropdownGuest.classList.toggle('active');
+        }
+    });
+    
+    // Botão de Logout
+    if (btnLogout) {
+        btnLogout.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Aqui você colocaria a lógica real de logout
+            isUserLoggedIn = false;
+            updateUserMenu();
+            userDropdownLogged.classList.remove('active');
+            alert('Você saiu da sua conta!');
+        });
+    }
+    
+    // Desktop: Fechar dropdown ao clicar fora
+    const isMobile = window.innerWidth <= 969;
+    if (!isMobile) {
+        document.addEventListener('click', function(e) {
+            if (!userCircle.contains(e.target) && 
+                !userDropdownGuest.contains(e.target) && 
+                !userDropdownLogged.contains(e.target)) {
+                userDropdownGuest.classList.remove('active');
+                userDropdownLogged.classList.remove('active');
+            }
+        });
+    }
+    
+    // Atualizar comportamento ao redimensionar
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 969) {
+            userDropdownGuest.classList.remove('active');
+            userDropdownLogged.classList.remove('active');
+        }
+    });
+    
+    
+</script>
 </body>
 
 </html>
