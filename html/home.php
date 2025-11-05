@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Verificar se o usuário está logado
+$isUserLoggedIn = isset($_SESSION['usuario_id']);
+$nomeUsuario = $isUserLoggedIn ? $_SESSION['usuario_nome'] : '';
+$emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : ''; 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,44 +39,44 @@
             </label>
 
             <ul class="menu">
-                <li><a href="../html/home.html"> Home </a></li>
-                <li><a href="../html/cardapio.html"> Cardápio </a></li>
-                <li><a href="../html/quemsomos.html"> Quem somos </a></li>
-                <li><a href="../html/espaco.html"> Nosso espaço </a></li>
+                <li><a href="home.php"> Home </a></li>
+                <li><a href="cardapio.html"> Cardápio </a></li>
+                <li><a href="quemsomos.html"> Quem somos </a></li>
+                <li><a href="espaco.html"> Nosso espaço </a></li>
             </ul>
-            <!-- Perfil do usuário (aparece no menu mobile) -->
-<!-- Perfil do usuário (aparece no menu mobile) -->
-<li class="user-profile">
-    <div class="user-circle" id="userCircle">
-        <i class="fa fa-user"></i>
-    </div>
-    
-    <!-- DROPDOWN PARA USUÁRIO NÃO LOGADO -->
-    <div class="user-dropdown" id="userDropdownGuest">
-        <div class="dropdown-header">
-            <p>Bem-vindo!</p>
-            <span>Faça login ou cadastre-se</span>
-        </div>
-        <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-sign-in"></i> Entrar</a></li>
-            <li><a href="../conta/config/conexao.php"><i class="fa fa-user-plus"></i> Cadastrar</a></li>
-        </ul>
-    </div>
-    
-    <!-- DROPDOWN PARA USUÁRIO LOGADO -->
-    <div class="user-dropdown" id="userDropdownLogged" style="display: none;">
-        <div class="dropdown-header">
-            <p>João Silva</p>
-            <span>joao.silva@email.com</span>
-        </div>
-        <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-user"></i> Minha Conta</a></li>
-            <li><a href="#"><i class="fa fa-history"></i> Histórico</a></li>
-            <li class="dropdown-divider"></li>
-            <li><a href="#" id="btnLogout"><i class="fa fa-sign-out"></i> Sair</a></li>
-        </ul>
-    </div>
-</li>
+            
+            <!-- Perfil do usuário -->
+            <li class="user-profile">
+                <div class="user-circle" id="userCircle">
+                    <i class="fa fa-user"></i>
+                </div>
+                
+                <!-- DROPDOWN PARA USUÁRIO NÃO LOGADO -->
+                <div class="user-dropdown" id="userDropdownGuest" style="<?php echo !$isUserLoggedIn ? 'display: block;' : 'display: none;'; ?>">
+                    <div class="dropdown-header">
+                        <p>Bem-vindo!</p>
+                        <span>Faça login ou cadastre-se</span>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="../conta/login.php"><i class="fa fa-sign-in"></i> Entrar</a></li>
+                        <li><a href="../conta/cadastro.php"><i class="fa fa-user-plus"></i> Cadastrar</a></li>
+                    </ul>
+                </div>
+                
+                <!-- DROPDOWN PARA USUÁRIO LOGADO -->
+                <div class="user-dropdown" id="userDropdownLogged" style="<?php echo $isUserLoggedIn ? 'display: block;' : 'display: none;'; ?>">
+                    <div class="dropdown-header">
+                        <p><?php echo htmlspecialchars($nomeUsuario); ?></p>
+                        <span><?php echo htmlspecialchars($emailUsuario); ?></span>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="../conta/index.php"><i class="fa fa-user"></i> Minha Conta</a></li>
+                        <li><a href="#"><i class="fa fa-history"></i> Histórico</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="../conta/actions/logout.php" id="btnLogout"><i class="fa fa-sign-out"></i> Sair</a></li>
+                    </ul>
+                </div>
+            </li>
         </nav>
 
     </header>
@@ -77,7 +86,7 @@
         <div class="texto-home">
 
             <P class="p1"> Bem-vindos ao<b> FomExpress</b>!</P>
-        <h3>Qualidade para quem tem pressa</h3>
+            <h3>Qualidade para quem tem pressa</h3>
             <p class="p2"> Equilíbrio com a qualidade que sua rotina precisa!
             </p><br>
 
@@ -117,25 +126,9 @@
     const userCircle = document.getElementById('userCircle');
     const userDropdownGuest = document.getElementById('userDropdownGuest');
     const userDropdownLogged = document.getElementById('userDropdownLogged');
-    const btnLogout = document.getElementById('btnLogout');
     
-    // VERIFICAR SE O USUÁRIO ESTÁ LOGADO
-    // Altere esta variável para true quando o usuário fizer login
-    let isUserLoggedIn = false; // false = não logado, true = logado
-    
-    // Função para mostrar o dropdown correto
-    function updateUserMenu() {
-        if (isUserLoggedIn) {
-            userDropdownGuest.style.display = 'none';
-            userDropdownLogged.style.display = 'block';
-        } else {
-            userDropdownGuest.style.display = 'block';
-            userDropdownLogged.style.display = 'none';
-        }
-    }
-    
-    // Atualizar menu ao carregar a página
-    updateUserMenu();
+    // VERIFICAR SE O USUÁRIO ESTÁ LOGADO (vindo do PHP)
+    let isUserLoggedIn = <?php echo $isUserLoggedIn ? 'true' : 'false'; ?>;
     
     // Toggle do dropdown ao clicar no círculo
     userCircle.addEventListener('click', function(e) {
@@ -143,22 +136,12 @@
         
         if (isUserLoggedIn) {
             userDropdownLogged.classList.toggle('active');
+            userDropdownGuest.classList.remove('active');
         } else {
             userDropdownGuest.classList.toggle('active');
+            userDropdownLogged.classList.remove('active');
         }
     });
-    
-    // Botão de Logout
-    if (btnLogout) {
-        btnLogout.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Aqui você colocaria a lógica real de logout
-            isUserLoggedIn = false;
-            updateUserMenu();
-            userDropdownLogged.classList.remove('active');
-            alert('Você saiu da sua conta!');
-        });
-    }
     
     // Desktop: Fechar dropdown ao clicar fora
     const isMobile = window.innerWidth <= 969;
@@ -180,8 +163,6 @@
             userDropdownLogged.classList.remove('active');
         }
     });
-    
-    
 </script>
 </body>
 

@@ -19,7 +19,7 @@
     <form action="actions/processa_login.php" method="POST">
         <p>Email: <input type="email" name="email" required></p>
         <p>Senha: <input type="password" name="senha" required></p>
-        <button type="submit">Entrar</button>
+        <button type="../html/home.html">Entrar</button>
     </form>
     <p>Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
 </body>
