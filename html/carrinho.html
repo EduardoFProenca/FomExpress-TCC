@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="../css/cardapio.css">
+    <style>
+        .carrinho-container {
+            max-width: 900px;
+            margin: 120px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(2, 91, 75, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #046f6f;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #046f6f;
+            color: #fff;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            background: #046f6f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #034c4c;
+        }
+
+        .empty-msg {
+            text-align: center;
+            font-size: 18px;
+            padding: 25px;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 22px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #046f6f;
+        }
+
+        .btn-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .btn-voltar {
+            background: #777;
+        }
+
+        .btn-voltar:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carrinho-container">
+        <h1>🛒 Seu Carrinho</h1>
+        <div id="carrinho"></div>
+    </div>
+
+    <script src="../js/carrinho.js"></script>
+    <script>
+        function renderizarCarrinho() {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            const container = document.getElementById("carrinho");
+
+            if (carrinho.length === 0) {
+                container.innerHTML = `<p class="empty-msg">Seu carrinho está vazio.</p>`;
+                return;
+            }
+
+            let html = `
+                <table>
+                    <tr>
+                        <th>Item</th>
+                        <th>Preço</th>
+                        <th>Qtd</th>
+                        <th>Subtotal</th>
+                        <th>Ações</th>
+                    </tr>
+            `;
+
+            let total = 0;
+
+            carrinho.forEach((item, index) => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+
+                html += `
+                    <tr>
+                        <td>${item.nome}</td>
+                        <td>R$ ${item.preco.toFixed(2)}</td>
+                        <td>${item.quantidade}</td>
+                        <td>R$ ${subtotal.toFixed(2)}</td>
+                        <td>
+                            <button class="btn" onclick="alterarQtd(${index}, 1)">+</button>
+                            <button class="btn" onclick="alterarQtd(${index}, -1)">-</button>
+                            <button class="btn" onclick="removerItem(${index})">Remover</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `</table>
+                <p class="total">Total: R$ ${total.toFixed(2)}</p>
+
+                <div class="btn-actions">
+                    <button class="btn btn-voltar" onclick="window.location.href='cardapio.html'">← Continuar Comprando</button>
+                    <button class="btn" onclick="finalizarCompra()">Finalizar Pedido</button>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function alterarQtd(index, valor) {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho[index].quantidade += valor;
+            if (carrinho[index].quantidade <= 0) carrinho.splice(index, 1);
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            renderizarCarrinho();
+        }
+
+        function removerItem(index) {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            renderizarCarrinho();
+        }
+
+        function finalizarCompra() {
+            alert("✅ Pedido enviado! (em breve enviaremos ao back-end Java)");
+            localStorage.removeItem("carrinho");
+            window.location.href = "home.php";
+        }
+
+        renderizarCarrinho();
+    </script>
+
+</body>
+</html>

@@ -2,348 +2,853 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Cardápio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/cardapio.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet"/>
-     <link rel="shortcut icon" href="../img/logo/favicon-FOMEXPRESS.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - FomeExpress</title>
+    <link rel="stylesheet" href="../css/cardapio.css">
+    <link rel="shortcut icon" href="../img/logo/favicon-FOMEXPRESS.png" type="image/x-icon">
+    <style>
+        .carrinho-container {
+            max-width: 1000px;
+            margin: 120px auto 50px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(4, 111, 111, 0.2);
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background: #046f6f;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #034c4c;
+        }
+
+        .btn-qtd {
+            background: #046f6f;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-remover {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- HEADER IGUAL AO CARDÁPIO -->
     <header class="header">
-
         <div class="logo">
             <img src="../img/logo/Logo-Fomexpress.png">
         </div>
 
         <nav class="nav">
-
             <input type="checkbox" id="checkbox" class="checkbox" />
-            <!-- essa bolinha existe e é clicada, mas fica omitida -->
-            <label for="checkbox" class="label-menu">
-                <!-- "for" significa que clicar na label deve ser equivalente a clicar no input que tem o mesmo if especificado em "for"-->
-                Menu
-                <span class="btnhamburguer"></span>
-            </label>
-
-
+            <label for="checkbox" class="label-menu">Menu <span class="btnhamburguer"></span></label>
             <ul class="menu">
                 <li><a href="home.php"> Home </a></li>
                 <li><a href="../html/cardapio.html"> Cardápio </a></li>
                 <li><a href="../html/quemsomos.html"> Quem somos </a></li>
                 <li><a href="../html/espaco.html"> Nosso espaço </a></li>
             </ul>
-
         </nav>
     </header>
 
-    </br> </br> </br> </br> 
-    
+    <br><br><br><br>
+
     <h1 class="main-title">Bem-vindos ao Cardápio!</h1>
-    <!-- Aqui podemos inserir um video que irá ter o efeito de rodar automaticamente -->
+
     <video autoplay muted loop id="video">
         <source src="../video/videorestaurante.mp4" type="video/mp4">
     </video>
 
     <section class="home" id="home">
-        <!-- Aqui alteramos as imagens do cardápio, assim como seus nomes -->
+
+        <!-- APERITIVOS -->
         <div class="row">
-                <h2  style="text-align:center">Aperitivos</h2>
-                <br>
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-aperitivo-1.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Jackpot</h3>
-                            <p class="title">Naco de tofu e farinha de trigo</p>
-                            <p> 18 $</p>
-                        </div>
-                    </div>
-                </div>
+            <h2 style="text-align:center">Aperitivos</h2><br>
 
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-aperitivo-2.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Bingo</h3>
-                            <p class="title">Tomate recheado com arroz e tomilho</p>
-                            <p> 21 $</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-aperitivo-3.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Roleta</h3>
-                            <p class="title">Cream cheese, creme de leite e pepino</p>
-                            <p> 16 $</p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-
-         <div class="row">
-                <h2 style="text-align:center">Massas</h2>
-                <br>
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-massas-1.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Poker</h3>
-                            <p class="title">Macarrão e cebolinha verde</p>
-                            <p> 30 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-massas-2.jpg" alt="John" style="width:100%">
-                            <h3>Blackjack</h3>
-                            <p class="title">Espaguete, cogumelos shiitake e shimeji</p>
-                            <p> 27 $</p>
-                        </div>
-                    </div>   
-                    <div class="column">
-                        <div class="card">
-                        <img src="../img/cardapio/img-massas-3.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Baccarat</h3>
-                            <p class="title"> Espaguete e creme de leite</p>
-                            <p> 32 $</p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-
-         <div class="row">
-                <h2 style="text-align:center">Entradas</h2>
-                <br>
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-entradas-1.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Truco</h3>
-                            <p class="title">Pão integral e queijo branco </p>
-                            <p> 22 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-entradas-2.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Canastra</h3>
-                            <p class="title">Tomate, pepino e cebola</p>
-                            <p> 24 $</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="card">
-                        <img src="../img/cardapio/img-entradas-3.jpg" alt="John" style="width:100%">
-                        <div class="container">
-                            <h3>Can-Can</h3>
-                            <p class="title">Carne de soja, alface e tomate</p>
-                            <p> 28 $</p>
-                        </div>
-                    </div>
-                </div>
-         </div>
-
-         <div class="row">
-            <h2 style="text-align:center">Saladas</h2>
-            <br>
             <div class="column">
                 <div class="card">
-                    <img src="../img/cardapio/img-salada-1.jpg" alt="John" style="width:100%">
+                    <img src="../img/cardapio/img-aperitivo-1.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Jackpot</h3>
+                        <p class="title">Naco de tofu e farinha de trigo</p>
+                        <p>R$ 18,00</p>
+                        <button onclick="adicionarAoCarrinho('Jackpot', 18)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-aperitivo-2.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Bingo</h3>
+                        <p class="title">Tomate recheado com arroz e tomilho</p>
+                        <p>R$ 21,00</p>
+                        <button onclick="adicionarAoCarrinho('Bingo', 21)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-aperitivo-3.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Roleta</h3>
+                        <p class="title">Cream cheese, creme de leite e pepino</p>
+                        <p>R$ 16,00</p>
+                        <button onclick="adicionarAoCarrinho('Roleta', 16)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MASSAS -->
+        <div class="row">
+            <h2 style="text-align:center">Massas</h2><br>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-massas-1.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Poker</h3>
+                        <p class="title">Macarrão e cebolinha verde</p>
+                        <p>R$ 30,00</p>
+                        <button onclick="adicionarAoCarrinho('Poker', 30)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-massas-2.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Blackjack</h3>
+                        <p class="title">Espaguete, cogumelos shiitake e shimeji</p>
+                        <p>R$ 27,00</p>
+                        <button onclick="adicionarAoCarrinho('Blackjack', 27)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-massas-3.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Baccarat</h3>
+                        <p class="title">Espaguete e creme de leite</p>
+                        <p>R$ 32,00</p>
+                        <button onclick="adicionarAoCarrinho('Baccarat', 32)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ENTRADAS -->
+        <div class="row">
+            <h2 style="text-align:center">Entradas</h2><br>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-entradas-1.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Truco</h3>
+                        <p class="title">Pão integral e queijo branco</p>
+                        <p>R$ 22,00</p>
+                        <button onclick="adicionarAoCarrinho('Truco', 22)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-entradas-2.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Canastra</h3>
+                        <p class="title">Tomate, pepino e cebola</p>
+                        <p>R$ 24,00</p>
+                        <button onclick="adicionarAoCarrinho('Canastra', 24)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-entradas-3.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Can-Can</h3>
+                        <p class="title">Carne de soja, alface e tomate</p>
+                        <p>R$ 28,00</p>
+                        <button onclick="adicionarAoCarrinho('Can-Can', 28)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SALADAS -->
+        <div class="row">
+            <h2 style="text-align:center">Saladas</h2><br>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-salada-1.jpg" style="width:100%">
                     <div class="container">
                         <h3>Caça-níquel</h3>
                         <p class="title">Salada de beterraba e cenoura</p>
-                        <p> 25 $</p>
+                        <p>R$ 25,00</p>
+                        <button onclick="adicionarAoCarrinho('Caça-níquel', 25)">Adicionar</button>
                     </div>
                 </div>
             </div>
+
             <div class="column">
                 <div class="card">
-                    <img src="../img/cardapio/img-salada-2.jpg" alt="John" style="width:100%">
+                    <img src="../img/cardapio/img-salada-2.jpg" style="width:100%">
                     <div class="container">
                         <h3>Roda da fortuna</h3>
                         <p class="title">Mix de verduras e legumes</p>
-                        <p> 23 $</p>
+                        <p>R$ 23,00</p>
+                        <button onclick="adicionarAoCarrinho('Roda da fortuna', 23)">Adicionar</button>
                     </div>
                 </div>
             </div>
+
             <div class="column">
                 <div class="card">
-                    <img src="../img/cardapio/img-salada-3.jpg" alt="John" style="width:100%">
+                    <img src="../img/cardapio/img-salada-3.jpg" style="width:100%">
                     <div class="container">
                         <h3>Dados</h3>
                         <p class="title">Mix de frutas</p>
-                        <p> 24 $</p>
+                        <p>R$ 24,00</p>
+                        <button onclick="adicionarAoCarrinho('Dados', 24)">Adicionar</button>
                     </div>
                 </div>
             </div>
-     </div>
+        </div>
 
-     <div class="row">
-        <h2 style="text-align:center">Acompanhamentos</h2>
-        <br>
-        <div class="column">
-            <div class="card">
-                <img src="../img/cardapio/img-acomp-1.jpg" alt="John" style="width:100%">
-                <div class="container">
-                    <h3>Fonte de Bellagio</h3>
-                    <p class="title">Bolonhesa ao molho de tomate</p>
-                    <p> 14 $</p>
+        <!-- ACOMPANHAMENTOS -->
+        <div class="row">
+            <h2 style="text-align:center">Acompanhamentos</h2><br>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-acomp-1.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Fonte de Bellagio</h3>
+                        <p class="title">Bolonhesa ao molho de tomate</p>
+                        <p>R$ 14,00</p>
+                        <button onclick="adicionarAoCarrinho('Fonte de Bellagio', 14)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-acomp-2.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>The Strp</h3>
+                        <p class="title">Filé de frango grelhado e purê de batata</p>
+                        <p>R$ 29,00</p>
+                        <button onclick="adicionarAoCarrinho('The Strp', 29)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-acomp-3.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>High Rolle</h3>
+                        <p class="title">Repolho recheado</p>
+                        <p>R$ 25,00</p>
+                        <button onclick="adicionarAoCarrinho('High Rolle', 25)">Adicionar</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="column">
-            <div class="card">
-                <img src="../img/cardapio/img-acomp-2.jpg" alt="John" style="width:100%">
-                <div class="container">
-                    <h3>The Strp</h3>
-                    <p class="title">Filé de frango grelhado e purê de batata </p>
-                    <p> 29 $</p>
+
+        <!-- SOBREMESAS -->
+        <div class="row">
+            <h2 style="text-align:center">Sobremesas</h2><br>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-sobrem-1.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>EUA</h3>
+                        <p class="title">Torta de morango</p>
+                        <p>R$ 14,00</p>
+                        <button onclick="adicionarAoCarrinho('EUA', 14)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-sobrem-2.png" style="width:100%">
+                    <div class="container">
+                        <h3>Las Vegas</h3>
+                        <p class="title">Bolo de paçoca</p>
+                        <p>R$ 15,00</p>
+                        <button onclick="adicionarAoCarrinho('Las Vegas', 15)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-sobrem-3.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Nevada</h3>
+                        <p class="title">Bolo com sorvete</p>
+                        <p>R$ 16,00</p>
+                        <button onclick="adicionarAoCarrinho('Nevada', 16)">Adicionar</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="column">
-            <div class="card">
-                <img src="../img/cardapio/img-acomp-3.jpg" alt="John" style="width:100%">
-                <div class="container">
-                    <h3>High Rolle</h3>
-                    <p class="title">Repolho recheado </p>
-                    <p> 25 $</p>
+
+        <!-- BEBIDAS -->
+        <div class="row">
+            <h2 style="text-align:center">Bebidas</h2><br>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-bebidas-1.png" style="width:100%">
+                    <div class="container">
+                        <h3>Capela</h3>
+                        <p class="title">Cerveja artesanal</p>
+                        <p>R$ 16,00</p>
+                        <button onclick="adicionarAoCarrinho('Capela', 16)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-bebidas-2.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Cassino</h3>
+                        <p class="title">Suco natural</p>
+                        <p>R$ 13,00</p>
+                        <button onclick="adicionarAoCarrinho('Cassino', 13)">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <img src="../img/cardapio/img-bebidas-3.jpg" style="width:100%">
+                    <div class="container">
+                        <h3>Luxo</h3>
+                        <p class="title">Chás</p>
+                        <p>R$ 8,00</p>
+                        <button onclick="adicionarAoCarrinho('Luxo', 8)">Adicionar</button>
+                    </div>
                 </div>
             </div>
         </div>
- </div>
-
- <div class="row">
-    <h2 style="text-align:center">Sobremesas</h2>
-    <br>
-    <div class="column">
-        <div class="card">
-            <img src="../img/cardapio/img-sobrem-1.jpg" alt="John" style="width:100%">
-            <div class="container">
-                <h3>EUA</h3>
-                <p class="title">Torta de morango</p>
-                <p> 14 $</p>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <img src="../img/cardapio/img-sobrem-2.png" alt="John" style="width:100%">
-            <div class="container">
-                <h3>Las Vegas</h3>
-                <p class="title">Bolo de paçoca</p>
-                <p> 15 $</p>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <img src="../img/cardapio/img-sobrem-3.jpg" alt="John" style="width:100%">
-            <div class="container">
-                <h3>Nevada</h3>
-                <p class="title">Bolo com sorvete</p>
-                <p> 16 $</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <h2 style="text-align:center">Bebidas</h2>
-    <br>
-    <div class="column">
-        <div class="card">
-            <img src="../img/cardapio/img-bebidas-1.png" alt="John" style="width:100%">
-            <div class="container">
-                <h3>Capela</h3>
-                <p class="title">Cerveja artesanal</p>
-                <p> 16 $</p>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <img src="../img/cardapio/img-bebidas-2.jpg" alt="John" style="width:100%">
-            <div class="container">
-                <h3>Cassino</h3>
-                <p class="title">Suco natural</p>
-                <p> 13 $</p>
-            </div>
-        </div>
-    </div>
-    <div class="column">
-        <div class="card">
-            <img src="../img/cardapio/img-bebidas-3.jpg" alt="John" style="width:100%">
-            <div class="container">
-                <h3>Luxo</h3>
-                <p class="title">Chás</p>
-                <p> 8 $</p>
-            </div>
-        </div>
-    </div>
-</div>
 
     </section>
 
+    <!-- FOOTER -->
+    <!-- FOOTER -->
     <div class="footer">
-
         <div class="redes-footer">
-            <a href="https://www.facebook.com/profile.php?id=100086796253137&mibextid=ZbWKwL"> <i class="fa fa-facebook"> </i> </a>
-            <a href="https://instagram.com/vegas.restaurante?igshid=YmMyMTA2M2Y="> <i class="fa fa-instagram"> </i> </a>
-            <a href="https://wa.me/5581996604155"> <i class="fa fa-whatsapp"> </i> </a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-whatsapp"></i></a>
         </div>
-
-        <ul>                                   
+        <ul>
             <li><a href="quemsomos.html#link_trabconosco"> Trabalhe Conosco </a></li>
-            <li><a href="espaco.html#link_mapa"> Localização. </a></li>
-            <li><a href="espaco.html#link_duvidas"> Dúvidas. </a></li>
+            <li><a href="espaco.html#link_mapa"> Localização </a></li>
+            <li><a href="espaco.html#link_duvidas"> Dúvidas </a></li>
         </ul>
-        <p class="copyright">
-            FomExpress Restaurante © 2025
-        </p>
+        <p class="copyright">FomeExpress © 2025</p>
     </div>
 
+    <!-- linka o carrinho -->
+
+    <script src="../js/carrinho.js"></script>
+
+    
+    <!-- =============================== -->
+<!-- SISTEMA HÍBRIDO - MODAL RÁPIDO -->
+<!-- =============================== -->
+
+<!-- Botão Flutuante Único -->
+<div class="botao-carrinho-flutuante" onclick="abrirModalCarrinho()">
+    🛒
+    <span class="contador-carrinho" id="contadorCarrinho"></span>
+</div>
+
+<!-- Modal Carrinho Rápido -->
+<div id="modalCarrinhoRapido" class="modal-carrinho-rapido">
+    <div class="modal-conteudo-rapido">
+        <div class="modal-header-rapido">
+            <h3>🛒 Seu Pedido</h3>
+            <button class="fechar-modal-rapido" onclick="fecharModalCarrinho()">&times;</button>
+        </div>
+        
+        <div class="modal-body-rapido" id="listaCarrinhoRapido">
+            <!-- Itens do carrinho aparecerão aqui -->
+        </div>
+        
+        <div class="modal-footer-rapido">
+            <div class="total-rapido" id="totalRapido">Total: R$ 0,00</div>
+            <div class="botoes-rapidos">
+                <button class="btn-continuar" onclick="fecharModalCarrinho()">Continuar Comprando</button>
+                <button class="btn-finalizar" onclick="irParaCarrinhoCompleto()">Finalizar Pedido ›</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ===== BOTÃO FLUTUANTE ===== */
+    .botao-carrinho-flutuante {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #046f6f;
+        color: white;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(4, 111, 111, 0.4);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    .botao-carrinho-flutuante:hover {
+        background: #034c4c;
+        transform: scale(1.1);
+    }
+
+    .contador-carrinho {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ff4444;
+        color: white;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        border: 2px solid white;
+    }
+
+    /* ===== BOTÕES ADICIONAR LARANJA ===== */
+    .card button {
+        background: #ff9100 !important;
+        color: white !important;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+        width: 100%;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .card button:hover {
+        background: #e58200 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(255, 145, 0, 0.3);
+    }
+
+    .card button:active {
+        transform: translateY(0);
+    }
+
+    /* ===== MODAL RÁPIDO ===== */
+    .modal-carrinho-rapido {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        animation: fadeIn 0.3s;
+    }
+
+    .modal-conteudo-rapido {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        width: 90%;
+        max-width: 500px;
+        max-height: 80vh;
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-header-rapido {
+        background: #046f6f;
+        color: white;
+        padding: 20px;
+        border-radius: 15px 15px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-header-rapido h3 {
+        margin: 0;
+        color: white;
+        font-size: 1.3rem;
+    }
+
+    .fechar-modal-rapido {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-body-rapido {
+        padding: 20px;
+        flex: 1;
+        overflow-y: auto;
+        max-height: 300px;
+    }
+
+    .modal-footer-rapido {
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 0 0 15px 15px;
+        border-top: 1px solid #ddd;
+    }
+
+    .total-rapido {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #046f6f;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .botoes-rapidos {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-continuar, .btn-finalizar {
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-continuar {
+        background: #777;
+        color: white;
+    }
+
+    .btn-finalizar {
+        background: #046f6f;
+        color: white;
+    }
+
+    .btn-continuar:hover {
+        background: #555;
+    }
+
+    .btn-finalizar:hover {
+        background: #034c4c;
+    }
+
+    /* ===== ITENS NO MODAL RÁPIDO ===== */
+    .item-rapido {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .info-rapida {
+        flex: 1;
+    }
+
+    .nome-rapido {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .preco-rapido {
+        color: #046f6f;
+        font-weight: bold;
+    }
+
+    .controles-rapidos {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-qtd-rapido {
+        background: #046f6f;
+        color: white;
+        border: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    .btn-remover-rapido {
+        background: #ff4444;
+        color: white;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 10px;
+        margin-left: 5px;
+    }
+
+    .carrinho-vazio-rapido {
+        text-align: center;
+        padding: 30px 20px;
+        color: #666;
+    }
+
+    .carrinho-vazio-rapido p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    /* ===== ANIMAÇÕES ===== */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { transform: translate(-50%, -60%); opacity: 0; }
+        to { transform: translate(-50%, -50%); opacity: 1; }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .botao-carrinho-flutuante.pulse {
+        animation: pulse 0.5s ease-in-out;
+    }
+
+    .modal-conteudo-rapido {
+        animation: slideIn 0.3s ease-out;
+    }
+</style>
+
 <script>
-let carrinho = [];
+    // ===== FUNÇÕES DO MODAL RÁPIDO =====
+    function abrirModalCarrinho() {
+        document.getElementById('modalCarrinhoRapido').style.display = 'block';
+        renderizarCarrinhoRapido();
+    }
 
-function adicionarAoCarrinho(nome, preco) {
-  carrinho.push({ nome, preco, quantidade: 1 });
-  alert(nome + " adicionado ao carrinho!");
-}
+    function fecharModalCarrinho() {
+        document.getElementById('modalCarrinhoRapido').style.display = 'none';
+    }
 
-function finalizarCompra() {
-  const total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+    // Fechar modal clicando fora
+    window.onclick = function(event) {
+        const modal = document.getElementById('modalCarrinhoRapido');
+        if (event.target === modal) {
+            fecharModalCarrinho();
+        }
+    }
 
-  fetch("http://localhost:8080/pedido", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ itens: carrinho, total })
-  })
-  .then(resp => resp.json())
-  .then(data => {
-    // Redireciona para a página de resultado da compra
-    localStorage.setItem("respostaPedido", JSON.stringify(data));
-    window.location.href = "resultado.html";
-  });
-}
+    // ===== RENDERIZAR CARRINHO NO MODAL RÁPIDO =====
+    function renderizarCarrinhoRapido() {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        const container = document.getElementById('listaCarrinhoRapido');
+        const totalElement = document.getElementById('totalRapido');
+
+        // Atualizar contador flutuante
+        atualizarContadorFlutuante();
+
+        // Se carrinho vazio
+        if (carrinho.length === 0) {
+            container.innerHTML = `
+                <div class="carrinho-vazio-rapido">
+                    <p>🛒 Seu carrinho está vazio</p>
+                    <p>Adicione itens deliciosos do cardápio!</p>
+                </div>
+            `;
+            totalElement.textContent = 'Total: R$ 0,00';
+            return;
+        }
+
+        // Renderizar itens
+        let html = '';
+        let total = 0;
+
+        carrinho.forEach((item, index) => {
+            const subtotal = item.preco * item.quantidade;
+            total += subtotal;
+
+            html += `
+                <div class="item-rapido">
+                    <div class="info-rapida">
+                        <div class="nome-rapido">${item.nome}</div>
+                        <div class="preco-rapido">R$ ${item.preco.toFixed(2)}</div>
+                    </div>
+                    <div class="controles-rapidos">
+                        <button class="btn-qtd-rapido" onclick="alterarQuantidadeRapido(${index}, -1)">-</button>
+                        <span style="font-weight: bold; min-width: 20px; text-align: center;">${item.quantidade}</span>
+                        <button class="btn-qtd-rapido" onclick="alterarQuantidadeRapido(${index}, 1)">+</button>
+                        <button class="btn-remover-rapido" onclick="removerItemRapido(${index})">🗑️</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+        totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    // ===== FUNÇÕES DE CONTROLE NO MODAL RÁPIDO =====
+    function alterarQuantidadeRapido(index, mudanca) {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        carrinho[index].quantidade += mudanca;
+        
+        if (carrinho[index].quantidade <= 0) {
+            carrinho.splice(index, 1);
+        }
+        
+        localStorage.setItem("carrinho", JSON.stringify(carrinho));
+        renderizarCarrinhoRapido();
+        
+        // Disparar evento para outras páginas
+        window.dispatchEvent(new Event('carrinhoAtualizado'));
+    }
+
+    function removerItemRapido(index) {
+        if (confirm("Remover este item do carrinho?")) {
+            const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem("carrinho", JSON.stringify(carrinho));
+            renderizarCarrinhoRapido();
+            
+            // Disparar evento para outras páginas
+            window.dispatchEvent(new Event('carrinhoAtualizado'));
+        }
+    }
+
+    // ===== ATUALIZAR CONTADOR FLUTUANTE =====
+    function atualizarContadorFlutuante() {
+        const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+        const contador = document.getElementById('contadorCarrinho');
+        const botao = document.querySelector('.botao-carrinho-flutuante');
+        
+        const totalItens = carrinho.reduce((total, item) => total + item.quantidade, 0);
+        
+        if (totalItens > 0) {
+            contador.textContent = totalItens;
+            contador.style.display = 'flex';
+            botao.classList.add('pulse');
+            
+            setTimeout(() => {
+                botao.classList.remove('pulse');
+            }, 500);
+        } else {
+            contador.style.display = 'none';
+        }
+    }
+
+    // ===== IR PARA CARRINHO COMPLETO =====
+    function irParaCarrinhoCompleto() {
+        window.location.href = 'carrinho.html';
+    }
+
+    // ===== INICIALIZAÇÃO =====
+    document.addEventListener('DOMContentLoaded', function() {
+        atualizarContadorFlutuante();
+    });
+
+    // ===== OUVIR MUDANÇAS NO CARRINHO =====
+    window.addEventListener('carrinhoAtualizado', function() {
+        atualizarContadorFlutuante();
+        
+        // Se modal estiver aberto, atualizar conteúdo
+        if (document.getElementById('modalCarrinhoRapido').style.display === 'block') {
+            renderizarCarrinhoRapido();
+        }
+    });
+
+    // Também ouvir mudanças no localStorage de outras abas
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'carrinho') {
+            atualizarContadorFlutuante();
+            
+            if (document.getElementById('modalCarrinhoRapido').style.display === 'block') {
+                renderizarCarrinhoRapido();
+            }
+        }
+    });
 </script>
-
-
-
 
 </body>
 

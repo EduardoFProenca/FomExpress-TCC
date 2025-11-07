@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Quem Somos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/quemsomos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+    <link rel="shortcut icon" href="../img/logo/favicon-FOMEXPRESS.png" type="image/x-icon">
+    
+
+</head>
+
+<body>
+    <header class="header">
+
+        <div class="logo">
+            <img src="../img/logo/Logo-Fomexpress.png" />
+        </div>
+
+        <nav class="nav">
+
+            <input type="checkbox" id="checkbox" class="checkbox" />
+            <label for="checkbox" class="label-menu">
+                Menu
+                <span class="btnhamburger"></span>
+            </label>
+            <!-- HEADER  -->
+            <ul class="menu">
+                <li><a href="../html/home.php"> Home </a></li>
+                <li><a href="../html/cardapio.html"> Cardápio </a></li>
+                <li><a href="../html/quemsomos.html"> Quem somos </a></li>
+                <li><a href="../html/espaco.html"> Nosso espaço </a></li>
+            </ul>
+        </nav>
+
+</header></header>
+
+<main class="main-content">
+    <h1 class="main-title">O restaurante mais inesquecível do Brasil</h1>
+    
+    <div class="content-wrapper">
+        <section class="text-section">
+            <p class="p1">No coração de São Paulo, onde o tempo voa e a rotina é intensa, surge o FormExpress – o seu refúgio para comida rápida, mas com qualidade de verdade!
+
+Aqui, unimos o sabor caseiro com a praticidade que a vida moderna exige, oferecendo pratos deliciosos, nutritivos e preparados com ingredientes frescos. Seja no almoço corrido, no jantar depois do trabalho ou naquela pausa rápida entre compromissos, no FormExpress você encontra:</p>
+        </section>
+
+        <section class="image-section">
+            <!--<div >
+                <img src="../img/backgrounds/espacos/espaco-cozinha-aberta.png" alt="Cozinha aberta com arco de tijolos, plantas penduradas e chefs preparando pratos no balcão."/>
+            </div> -->
+            <div >
+                <img src="../img/backgrounds/espacos/fundo-chefs-cozinha.png" alt="Chefs em uniforme branco e avental preto preparando pratos frescos sobre bancada de cozinha, com legumes coloridos e ervas aromáticas ao redor."/>
+            </div>
+        </section>
+    </div>
+
+    <!-- Codificação HTML do formulário */ -->
+     
+    <div class="container" id="link_trabconosco">
+    <form action="processa_trabconosco.php" method="POST" enctype="multipart/form-data">
+        <div class="form">
+            <div class="title">
+                <h1>Trabalhe Conosco!</h1>
+            </div>
+                    <div class="input-group">
+                        <div class="input-box">
+                            <label for="firstname">Nome</label>
+                            <input id="firstname" type="text" name="firstname" placeholder="Digite nome" required>
+                        </div>
+
+                        <div class="input-box">
+                            <label for="lastname">Sobrenome</label>
+                            <input id="lastname" type="text" name="lastname" placeholder="Digite sobrenome" required>
+                        </div>
+                      
+                        <div class="input-box">
+                            <label for="email">E-mail</label>
+                            <input id="email" type="email" name="email" placeholder="Digite e-mail" required>
+                        </div>
+                         <div class="input-box">
+                            <label for="number">Celular</label>
+                            <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="cidade">Cidade</label>
+                            <input id="cidade" type="text" name="cidade" placeholder="Digite cidade" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="estado">Estado</label>
+                            <input id="estado" type="text" name="estado" placeholder="Digite estado" required>
+                        </div>
+                       
+                    </div>
+
+                    <div class="gender-inputs">
+                        <div class="gender-title">
+                            <h6>Gênero</h6>
+                        </div>
+
+                        <div class="gender-group">
+                            <div class="gender-input">
+                                <input id="female" type="radio" name="gender">
+                                <label for="female">Feminino</label>
+                            </div>
+
+                            <div class="gender-input">
+                                <input id="male" type="radio" name="gender">
+                                <label for="male">Masculino</label>
+                            </div>
+
+                            <div class="gender-input">
+                                <input id="others" type="radio" name="gender">
+                                <label for="others">Outros</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    </br></br>
+                    <label for="curriculo">Anexe seu currículo:</label></br></br>
+                    <input type="file" id="curriculo" name="curriculo" />
+                    </br></br>
+
+                    <div class="enviar-button">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </br></br>    </br></br>
+                </form>
+            </div>
+        </form>
+    </div>
+    
+        <div class="empurra"></div>
+    </div>
+
+    <div class="footer">
+
+        <div class="redes-footer">
+           <a href="https://www.facebook.com/profile.php?id=100086796253137&mibextid=ZbWKwL"> <i class="fa fa-facebook"> </i> </a>
+            <a href="https://instagram.com/vegas.restaurante?igshid=YmMyMTA2M2Y="> <i class="fa fa-instagram"> </i> </a>
+            <a href="https://wa.me/5581996604155"> <i class="fa fa-whatsapp"> </i> </a>
+        </div>
+
+        <ul class="lista">
+            <li><a href="quemsomos.html#link_trabconosco"> Trabalhe Conosco </a></li>
+            <li><a href="espaco.html#link_mapa"> Localização </a></li>
+            <li><a href="espaco.html#link_duvidas"> Dúvidas </a></li>
+        </ul>
+        <p class="copyright">
+            FOMEXPRESS Restaurante © 2025
+        </p>
+    </div>
+
+</body>
+
+</html>
