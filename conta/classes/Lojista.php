@@ -11,7 +11,7 @@ class Lojista extends Usuario
     public function __construct($nome, $email, $senha, $telefone, $nomeRestaurante, $cnpj)
     {
         parent::__construct($nome, $email, $senha, $telefone);
-        
+
         $this->nomeRestaurante = $nomeRestaurante;
         $this->cnpj = $cnpj;
         $this->cardapio = [];
@@ -21,17 +21,17 @@ class Lojista extends Usuario
     {
         return $this->nomeRestaurante;
     }
-    
+
     public function getCnpj()
     {
         return $this->cnpj;
     }
-    
+
     public function getCardapio()
     {
         return $this->cardapio;
     }
-    
+
     public function gerenciarCardapio($item, $acao = 'adicionar')
     {
         if ($acao == 'adicionar') {
@@ -39,7 +39,7 @@ class Lojista extends Usuario
             return "Item '" . $item . "' adicionado ao cardápio do restaurante " . $this->nomeRestaurante . ".";
         }
     }
-    
+
     public function verPedidosRecebidos()
     {
         return "Exibindo pedidos recebidos para o restaurante " . $this->nomeRestaurante . ".";

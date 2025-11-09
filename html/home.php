@@ -4,7 +4,7 @@ session_start();
 // Verificar se o usuário está logado
 $isUserLoggedIn = isset($_SESSION['usuario_id']);
 $nomeUsuario = $isUserLoggedIn ? $_SESSION['usuario_nome'] : '';
-$emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : ''; 
+$emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : '';
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +44,13 @@ $emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : '';
                 <li><a href="quemsomos.html"> Quem somos </a></li>
                 <li><a href="espaco.html"> Nosso espaço </a></li>
             </ul>
-            
+
             <!-- Perfil do usuário -->
             <li class="user-profile">
                 <div class="user-circle" id="userCircle">
                     <i class="fa fa-user"></i>
                 </div>
-                
+
                 <!-- DROPDOWN PARA USUÁRIO NÃO LOGADO -->
                 <div class="user-dropdown" id="userDropdownGuest" style="<?php echo !$isUserLoggedIn ? 'display: block;' : 'display: none;'; ?>">
                     <div class="dropdown-header">
@@ -62,7 +62,7 @@ $emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : '';
                         <li><a href="../conta/cadastro.php"><i class="fa fa-user-plus"></i> Cadastrar</a></li>
                     </ul>
                 </div>
-                
+
                 <!-- DROPDOWN PARA USUÁRIO LOGADO -->
                 <div class="user-dropdown" id="userDropdownLogged" style="<?php echo $isUserLoggedIn ? 'display: block;' : 'display: none;'; ?>">
                     <div class="dropdown-header">
@@ -118,52 +118,52 @@ $emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : '';
         </ul>
 
         <p class="copyright">
-           FomExpress Restaurante © 2025
+            FomExpress Restaurante © 2025
         </p>
     </div>
 
-<script>
-    const userCircle = document.getElementById('userCircle');
-    const userDropdownGuest = document.getElementById('userDropdownGuest');
-    const userDropdownLogged = document.getElementById('userDropdownLogged');
-    
-    // VERIFICAR SE O USUÁRIO ESTÁ LOGADO (vindo do PHP)
-    let isUserLoggedIn = <?php echo $isUserLoggedIn ? 'true' : 'false'; ?>;
-    
-    // Toggle do dropdown ao clicar no círculo
-    userCircle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        
-        if (isUserLoggedIn) {
-            userDropdownLogged.classList.toggle('active');
-            userDropdownGuest.classList.remove('active');
-        } else {
-            userDropdownGuest.classList.toggle('active');
-            userDropdownLogged.classList.remove('active');
+    <script>
+        const userCircle = document.getElementById('userCircle');
+        const userDropdownGuest = document.getElementById('userDropdownGuest');
+        const userDropdownLogged = document.getElementById('userDropdownLogged');
+
+        // VERIFICAR SE O USUÁRIO ESTÁ LOGADO (vindo do PHP)
+        let isUserLoggedIn = <?php echo $isUserLoggedIn ? 'true' : 'false'; ?>;
+
+        // Toggle do dropdown ao clicar no círculo
+        userCircle.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            if (isUserLoggedIn) {
+                userDropdownLogged.classList.toggle('active');
+                userDropdownGuest.classList.remove('active');
+            } else {
+                userDropdownGuest.classList.toggle('active');
+                userDropdownLogged.classList.remove('active');
+            }
+        });
+
+        // Desktop: Fechar dropdown ao clicar fora
+        const isMobile = window.innerWidth <= 969;
+        if (!isMobile) {
+            document.addEventListener('click', function(e) {
+                if (!userCircle.contains(e.target) &&
+                    !userDropdownGuest.contains(e.target) &&
+                    !userDropdownLogged.contains(e.target)) {
+                    userDropdownGuest.classList.remove('active');
+                    userDropdownLogged.classList.remove('active');
+                }
+            });
         }
-    });
-    
-    // Desktop: Fechar dropdown ao clicar fora
-    const isMobile = window.innerWidth <= 969;
-    if (!isMobile) {
-        document.addEventListener('click', function(e) {
-            if (!userCircle.contains(e.target) && 
-                !userDropdownGuest.contains(e.target) && 
-                !userDropdownLogged.contains(e.target)) {
+
+        // Atualizar comportamento ao redimensionar
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 969) {
                 userDropdownGuest.classList.remove('active');
                 userDropdownLogged.classList.remove('active');
             }
         });
-    }
-    
-    // Atualizar comportamento ao redimensionar
-    window.addEventListener('resize', function() {
-        if (window.innerWidth <= 969) {
-            userDropdownGuest.classList.remove('active');
-            userDropdownLogged.classList.remove('active');
-        }
-    });
-</script>
+    </script>
 </body>
 
 </html>

@@ -37,7 +37,6 @@ h1 {
     overflow: hidden;  
     text-overflow: ellipsis;
 }
-
 .header {
     display: flex;
     align-items: center;
@@ -98,6 +97,7 @@ section {
     padding: 80px 18%;
 }
 
+
 html {
     box-sizing: border-box;
 }
@@ -130,6 +130,8 @@ html {
     clear: both;
     display: table;
 }
+
+
 
 .empurra{
     height: 140px;
@@ -213,6 +215,7 @@ html {
         transition: .3s;
     }
 }
+
 
 @media (max-width: 1150px) {
     .menu {

@@ -39,4 +39,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     echo "<h2>❌ Método inválido.</h2>";
 }
-?>

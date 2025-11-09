@@ -14,12 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         $usuario = $result->fetch_assoc();
-        
+
         if (password_verify($senha_digitada, $usuario['senha'])) {
             $_SESSION['usuario_id'] = $usuario['idUsuario'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email']; // ✅ ADICIONE ESTA LINHA
-            
+
             // REDIRECIONA PARA A HOME
             header("Location: ../../html/home.php");
             exit();
@@ -35,4 +35,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $conn->close();
 }
-?>
