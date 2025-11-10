@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $senha_digitada = $_POST['senha'];
 
-    $sql = "SELECT idUsuario, nome, email, senha FROM Usuario WHERE email = ?";
+    $sql = "SELECT id AS idUsuario, nome, email, senha FROM usuario WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();

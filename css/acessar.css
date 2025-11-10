@@ -1,0 +1,254 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 4.6rem;
+    position: fixed;
+    width: 100vw;
+    z-index: 1;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px #0000001a;
+}
+
+.logo img {
+    width: 140px;
+    margin-left: 20%;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 4.0rem;
+}
+
+.menu a {
+    display: block;
+    padding: 1rem;
+    color: #4D4C4C;
+    font-size: 16.5px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.menu a:hover {
+    color: #046f6f;
+}
+
+.label-menu, .checkbox {
+    display: none;
+}
+
+.main-content {
+    padding-top: 100px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form {
+    width: 90%;
+    max-width: 600px;
+    background-color: #f8f9f9;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px #0000001a;
+}
+
+.title {
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #046f6f;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.input-box input {
+    margin-top: 0.6rem;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.9rem;
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    outline: 1px solid #046f6f;
+}
+
+.enviar-button {
+    text-align: center;
+}
+
+.enviar-button button {
+    width: 40%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: #046f6f;
+    padding: 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.enviar-button button:hover {
+    background-color: #034e4e;
+}
+
+
+.footer {
+    height: 140px;
+    padding: 5px 0;
+    background-color: #FDFEEC;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.footer .redes-footer {
+    text-align: center;
+    padding-bottom: 25px;
+    color: #4b4c4d;
+    margin-top: 1%;
+}
+
+.footer .redes-footer a {
+    font-size: 24px;
+    color: inherit;
+    border: 1px solid #4b4c4d;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    opacity: 0.75;
+}
+
+.footer .redes-footer a:hover {
+    opacity: 0.9;
+}
+
+.footer .copyright {
+    margin-top: 9px;
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+}
+
+        .footer {
+            height: 140px;
+            padding: 5px 0;
+            background-color: #FDFEEC;
+            width: 100%;
+        }
+
+        .footer .redes-footer {
+            text-align: center;
+            padding-bottom: 25px;
+            color: #4b4c4d;
+            margin-top: 1%;
+        }
+
+        .footer .redes-footer a {
+            font-size: 24px;
+            color: inherit;
+            border: 1px solid #4b4c4d;
+            width: 40px;
+            height: 40px;
+            line-height: 38px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            opacity: 0.75;
+        }
+
+        .footer .redes-footer a:hover {
+            opacity: 0.9;
+        }
+
+        .footer ul {
+            margin-top: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .footer ul a {
+            color: inherit;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .footer ul li {
+            display: inline-block;
+            padding: 0 15px;
+            color: #4b4c4d;
+        }
+
+        .footer ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer .copyright {
+            margin-top: 9px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .empurra {
+            height: 140px;
+            padding: 5px 0;
+            width: 100%;
+        }
+
+        
