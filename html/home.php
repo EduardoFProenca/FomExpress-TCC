@@ -70,8 +70,6 @@ $emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : '';
                         <span><?php echo htmlspecialchars($emailUsuario); ?></span>
                     </div>
                     <ul class="dropdown-menu">
-                        <li><a href="../conta/index.php"><i class="fa fa-user"></i> Minha Conta</a></li>
-                        <li><a href="#"><i class="fa fa-history"></i> Histórico</a></li>
                         <li class="dropdown-divider"></li>
                         <li><a href="../conta/actions/logout.php" id="btnLogout"><i class="fa fa-sign-out"></i> Sair</a></li>
                     </ul>

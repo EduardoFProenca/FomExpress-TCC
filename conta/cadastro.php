@@ -6,6 +6,8 @@
     <title>FomExpress - Cadastro</title>
     <link rel="stylesheet" href="../css/cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../img/logo/Logo-Fomexpress.png" type="image/x-icon">
+
 </head>
 
 <body>
@@ -68,10 +70,10 @@
 
     <footer class="footer">
         <div class="redes-footer">
-            <a href="https://www.facebook.com/profile.php?id=100086796253137&mibextid=ZbWKwL" target="_blank">
+            <a href=" https://www.facebook.com/people/FomExpress-Restaurante/61583397555803" target="_blank">
                 <i class="fa-brands fa-facebook-f"></i>
             </a>
-            <a href="https://instagram.com/vegas.restaurante?igshid=YmMyMTA2M2Y=" target="_blank">
+            <a href="https://www.instagram.com/restaurante.fomexpress/?igsh=c2N3c3MzaXJrb2V6#" target="_blank">
                 <i class="fa-brands fa-instagram"></i>
             </a>
             <a href="https://wa.me/5581996604155" target="_blank">
