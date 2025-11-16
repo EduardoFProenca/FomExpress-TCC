@@ -79,48 +79,58 @@
     </div>
   </section>
 
-  <section id="link_reserva">
+<section id="link_reserva">
     <div class="text">
-      <h1>Faça sua Reserva</h1>
-      <div class="row g-2">
-        <div class="col-md">
-          <div class="input-group">
-            <span class="input-group-text">Primeiro e Último nome</span>
-            <input type="text" aria-label="First name" class="form-control">
-            <input type="text" aria-label="Last name" class="form-control">
-          </div>
-          <br>
-          <div class="form-floating">
-            <div class="input-group">
-              <span class="input-group-text">Seu principal e-mail</span>
-              <input type="email" class="form-control" id="floatingInputGrid" placeholder="nome@email.com">
+        <h1>Faça sua Reserva</h1>
+        
+        <!-- Mensagem de feedback -->
+        <div id="mensagemReserva" style="display: none; margin-bottom: 20px;">
+            <div class="alert" role="alert" id="alertReserva">
+                <span id="textoMensagem"></span>
             </div>
-          </div>
         </div>
-        <div class="col-md">
-          <div class="form-floating">
-            <select class="form-select" id="floatingSelectGrid">
-              <option selected>Mesa para quantos?</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="1">4</option>
-              <option value="2">5</option>
-              <option value="3">6</option>
-              <option value="1">7</option>
-              <option value="2">8</option>
-              <option value="3">9</option>
-              <option value="3">10</option>
-            </select>
-            <br>
-            <input class="btn btn-outline-success" type="reset" value="Limpar">
-            <input class="btn btn-outline-success" type="submit" value="Enviar">
-          </div>
-        </div>
-      </div>
-      </form>
+
+        <!-- Formulário -->
+        <form id="formReserva">
+            <div class="row g-2">
+                <div class="col-md">
+                    <div class="input-group">
+                        <span class="input-group-text">Primeiro e Último nome</span>
+                        <input type="text" name="primeiro_nome" aria-label="First name" class="form-control" required placeholder="Nome">
+                        <input type="text" name="ultimo_nome" aria-label="Last name" class="form-control" required placeholder="Sobrenome">
+                    </div>
+                    <br>
+                    <div class="form-floating">
+                        <div class="input-group">
+                            <span class="input-group-text">Seu principal e-mail</span>
+                            <input type="email" name="email" class="form-control" id="floatingInputGrid" placeholder="nome@email.com" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <select class="form-select" name="qtd_pessoas" id="floatingSelectGrid" required>
+                            <option value="" selected disabled>Mesa para quantos?</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        <br>
+                        <button type="reset" class="btn btn-outline-success">Limpar</button>
+                        <button type="submit" class="btn btn-success" id="btnEnviar">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-  </section>
+</section>
 
   <section id="link_mapa">
     <div class="text">
@@ -200,6 +210,8 @@
       FomExpres Restaurante © 2025
     </p>
   </div>
+
+  <script src="../js/reserva.js"></script>
 </body>
 
 </html>

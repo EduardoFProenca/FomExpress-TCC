@@ -520,3 +520,47 @@
            top: -0.4rem;
        }
    }
+
+/* Estilos para mensagens de sucesso/erro */    
+#mensagemTrabalhe {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.alert {
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    animation: slideDown 0.4s ease-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border: 2px solid #28a745;
+    color: #155724;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border: 2px solid #dc3545;
+    color: #721c24;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Destaque do título após mensagem */
+.title h1 {
+    margin-top: 0;
+}

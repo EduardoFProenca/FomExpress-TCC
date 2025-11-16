@@ -27,14 +27,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `reserva`
 --
 
-CREATE TABLE `reserva` (
-  `id` int NOT NULL,
-  `nome` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `qtd_pessoas` int NOT NULL,
-  `data_hora` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 --
 -- Dumping data for table `reserva`
 --
@@ -68,19 +60,6 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-CREATE TABLE `candidatos` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `nome` VARCHAR(100) NOT NULL,
-    `sobrenome` VARCHAR(100) NOT NULL,
-    `email` VARCHAR(150) NOT NULL,
-    `celular` VARCHAR(20),
-    `cidade` VARCHAR(100),
-    `estado` VARCHAR(50),
-    `genero` VARCHAR(20),
-    `curriculo` VARCHAR(255),
-    `data_envio` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 CREATE TABLE usuario (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(100) NOT NULL,
@@ -89,3 +68,38 @@ CREATE TABLE usuario (
   telefone VARCHAR(20),
   data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- =============================================
+-- TABELA: reserva
+-- Descrição: Armazena reservas de mesas
+-- =============================================
+CREATE TABLE IF NOT EXISTS reserva (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL COMMENT 'Nome completo do cliente',
+  email VARCHAR(100) NOT NULL COMMENT 'Email para contato',
+  qtd_pessoas INT NOT NULL COMMENT 'Quantidade de pessoas',
+  data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'Data e hora da reserva',
+  status VARCHAR(50) DEFAULT 'Pendente' COMMENT 'Status: Pendente, Confirmada, Cancelada',
+  INDEX idx_email (email),
+  INDEX idx_data (data_hora),
+  INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Reservas de mesas do restaurante';
+
+
+USE fomexpress_db;
+
+CREATE TABLE IF NOT EXISTS candidatos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL,
+    celular VARCHAR(20),
+    cidade VARCHAR(100),
+    estado VARCHAR(50),
+    genero VARCHAR(20),
+    curriculo VARCHAR(255),
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_email (email),
+    INDEX idx_data (data_envio)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

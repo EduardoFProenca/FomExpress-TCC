@@ -91,10 +91,10 @@ $emailUsuario = $isUserLoggedIn ? ($_SESSION['usuario_email'] ?? '') : '';
             </p><br>
 
             <div class="redes-home">
-                <a href=""> <i class="fa fa-facebook"> </i> </a>
-                <a href=""> <i class="fa fa-instagram"> </i> </a>
-                <a href=""> <i class="fa fa-whatsapp"> </i> </a>
-                <a href=""> <i class="fa fa-map"> </i> </a>
+                <a href="https://www.facebook.com/people/FomExpress-Restaurante/61583397555803"> <i class="fa fa-facebook"> </i> </a>
+                <a href="https://www.instagram.com/restaurante.fomexpress/?igsh=c2N3c3MzaXJrb2V6#"> <i class="fa fa-instagram"> </i> </a>
+                <a href="https://api.whatsapp.com/send/?phone=5581996604155&text&type=phone_number&app_absent=0"> <i class="fa fa-whatsapp"> </i> </a>
+                <a href="espaco.html#link_mapa"> <i class="fa fa-map"> </i> </a>
             </div>
 
             <div id="btn-reserva"> <a href="espaco.html#link_reserva"> <b>Fazer Reserva</b> </a> </div>

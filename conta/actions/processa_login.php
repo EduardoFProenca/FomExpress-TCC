@@ -6,7 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $senha_digitada = $_POST['senha'];
 
-    $sql = "SELECT id AS idUsuario, nome, email, senha FROM usuario WHERE email = ?";
+    // ✅ CORRIGIDO: Use 'idUsuario' em vez de 'id'
+    $sql = "SELECT idUsuario, nome, email, senha FROM usuario WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -18,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($senha_digitada, $usuario['senha'])) {
             $_SESSION['usuario_id'] = $usuario['idUsuario'];
             $_SESSION['usuario_nome'] = $usuario['nome'];
-            $_SESSION['usuario_email'] = $usuario['email']; // ✅ ADICIONE ESTA LINHA
+            $_SESSION['usuario_email'] = $usuario['email'];
 
-            // REDIRECIONA PARA A HOME
+            // Redireciona para a home
             header("Location: ../../html/home.php");
             exit();
         } else {

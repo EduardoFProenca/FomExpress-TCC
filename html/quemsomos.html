@@ -66,81 +66,89 @@
         </div>
 
         <!-- Codificação HTML do formulário */ -->
+<div class="container" id="link_trabconosco">
+    
+    <form id="formTrabalheConosco" enctype="multipart/form-data">
+        <div class="form">
+            
+            <!-- ✅ MENSAGEM NO TOPO - ANTES DO TÍTULO -->
+            <div id="mensagemTrabalhe" style="display: none; margin-bottom: 25px;">
+                <div class="alert" role="alert" id="alertTrabalhe">
+                    <span id="textoMensagemTrabalhe"></span>
+                </div>
+            </div>
 
-        <div class="container" id="link_trabconosco">
-            <form action="processa_trabconosco.php" method="POST" enctype="multipart/form-data">
-                <div class="form">
-                    <div class="title">
-                        <h1>Trabalhe Conosco!</h1>
-                    </div>
-                    <div class="input-group">
-                        <div class="input-box">
-                            <label for="firstname">Nome</label>
-                            <input id="firstname" type="text" name="firstname" placeholder="Digite nome" required>
-                        </div>
+            <div class="title">
+                <h1>Trabalhe Conosco!</h1>
+            </div>
 
-                        <div class="input-box">
-                            <label for="lastname">Sobrenome</label>
-                            <input id="lastname" type="text" name="lastname" placeholder="Digite sobrenome" required>
-                        </div>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="firstname">Nome</label>
+                    <input id="firstname" type="text" name="firstname" placeholder="Digite nome" required>
+                </div>
 
-                        <div class="input-box">
-                            <label for="email">E-mail</label>
-                            <input id="email" type="email" name="email" placeholder="Digite e-mail" required>
-                        </div>
-                        <div class="input-box">
-                            <label for="number">Celular</label>
-                            <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
-                        </div>
-                        <div class="input-box">
-                            <label for="cidade">Cidade</label>
-                            <input id="cidade" type="text" name="cidade" placeholder="Digite cidade" required>
-                        </div>
-                        <div class="input-box">
-                            <label for="estado">Estado</label>
-                            <input id="estado" type="text" name="estado" placeholder="Digite estado" required>
-                        </div>
+                <div class="input-box">
+                    <label for="lastname">Sobrenome</label>
+                    <input id="lastname" type="text" name="lastname" placeholder="Digite sobrenome" required>
+                </div>
 
-                    </div>
+                <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" placeholder="Digite e-mail" required>
+                </div>
 
-                    <div class="gender-inputs">
-                        <div class="gender-title">
-                            <h6>Gênero</h6>
-                        </div>
+                <div class="input-box">
+                    <label for="number">Celular</label>
+                    <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                </div>
 
-                        <div class="gender-group">
-                            <div class="gender-input">
-                                <input id="female" type="radio" name="gender">
-                                <label for="female">Feminino</label>
-                            </div>
+                <div class="input-box">
+                    <label for="cidade">Cidade</label>
+                    <input id="cidade" type="text" name="cidade" placeholder="Digite cidade" required>
+                </div>
 
-                            <div class="gender-input">
-                                <input id="male" type="radio" name="gender">
-                                <label for="male">Masculino</label>
-                            </div>
+                <div class="input-box">
+                    <label for="estado">Estado</label>
+                    <input id="estado" type="text" name="estado" placeholder="Digite estado" required>
+                </div>
+            </div>
 
-                            <div class="gender-input">
-                                <input id="others" type="radio" name="gender">
-                                <label for="others">Outros</label>
-                            </div>
+            <div class="gender-inputs">
+                <div class="gender-title">
+                    <h6>Gênero</h6>
+                </div>
 
-                        </div>
+                <div class="gender-group">
+                    <div class="gender-input">
+                        <input id="female" type="radio" name="gender" value="Feminino" required>
+                        <label for="female">Feminino</label>
                     </div>
 
-
-                    </br></br>
-                    <label for="curriculo">Anexe seu currículo:</label></br></br>
-                    <input type="file" id="curriculo" name="curriculo" />
-                    </br></br>
-
-                    <div class="enviar-button">
-                        <button type="submit">Enviar</button>
+                    <div class="gender-input">
+                        <input id="male" type="radio" name="gender" value="Masculino" required>
+                        <label for="male">Masculino</label>
                     </div>
-                    </br></br> </br></br>
-            </form>
+
+                    <div class="gender-input">
+                        <input id="others" type="radio" name="gender" value="Outros" required>
+                        <label for="others">Outros</label>
+                    </div>
+                </div>
+            </div>
+
+            <br><br>
+            <label for="curriculo">Anexe seu currículo (PDF, DOC, DOCX - máx 5MB):</label><br><br>
+            <input type="file" id="curriculo" name="curriculo" accept=".pdf,.doc,.docx" required />
+            <br><br>
+
+            <div class="enviar-button">
+                <button type="submit" id="btnEnviarTrabalhe">Enviar</button>
+            </div>
+            <br><br>
         </div>
-        </form>
-        </div>
+    </form>
+</div>
 
         <div class="empurra"></div>
         </div>
@@ -165,6 +173,7 @@
             </p>
         </div>
 
+    <script src="../js/trabalhe_conosco.js"></script>
 </body>
 
 </html>
