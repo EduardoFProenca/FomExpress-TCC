@@ -1,5 +1,5 @@
 <?php
-require_once "back-end/config/conexao.php";
+require_once "../conta/cofig/conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nome = $_POST["firstname"];
