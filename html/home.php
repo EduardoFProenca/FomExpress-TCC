@@ -17,12 +17,6 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <link rel="shortcut icon" href="../img/logo/Logo-Fomexpress.png" type="image/x-icon" />
-
-    <style>
-        #modalEditarPerfil {
-            display: none !important;
-        }
-    </style>
 </head>
 
 <body>
@@ -47,11 +41,13 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
                 <li><a href="espaco.html">Nosso espaço</a></li>
             </ul>
 
+            <!-- Ícone do usuário -->
             <div class="user-profile">
                 <div class="user-circle" id="userCircle">
                     <i class="fa fa-user"></i>
                 </div>
 
+                <!-- Dropdown visitante -->
                 <?php if (!$isUserLoggedIn): ?>
                     <div class="user-dropdown" id="userDropdownGuest">
                         <div class="dropdown-header">
@@ -64,14 +60,13 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
                         </ul>
                     </div>
                 <?php else: ?>
+                    <!-- Dropdown logado -->
                     <div class="user-dropdown" id="userDropdownLogged">
                         <div class="dropdown-header">
                             <p><?= $nomeUsuario ?></p>
                             <span><?= $emailUsuario ?></span>
                         </div>
                         <ul class="dropdown-menu">
-                            <li><a href="#" id="btnAbrirModal"><i class="fa fa-pencil"></i> Editar Perfil</a></li>
-                            <li class="dropdown-divider"></li>
                             <li><a href="#" onclick="confirmarExclusaoConta(); return false;" style="color:#ff4444;"><i class="fa fa-trash"></i> Excluir Conta</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="../conta/actions/logout.php"><i class="fa fa-sign-out"></i> Sair</a></li>
@@ -82,8 +77,7 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
         </nav>
     </header>
 
-    <?php if ($isUserLoggedIn) include 'editar_perfil.php'; ?>
-
+    <!-- Conteúdo principal -->
     <section class="home" id="home">
         <div class="texto-home">
             <p class="p1">Bem-vindos ao <b>FomExpress</b>!</p>
@@ -141,58 +135,6 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
             }
         });
 
-        /* ---------- modal ---------- */
-        function abrirModalEditarPerfil() {
-            document.getElementById('modalEditarPerfil').style.display = 'block';
-            userDropdownLogged.classList.remove('active');
-        }
-
-        function fecharModalEditarPerfil() {
-            const m = document.getElementById('modalEditarPerfil');
-            m.style.display = 'none';
-            document.getElementById('formEditarPerfil').reset();
-            document.getElementById('mensagemEditar').style.display = 'none';
-        }
-
-        window.addEventListener('click', e => {
-            const m = document.getElementById('modalEditarPerfil');
-            if (e.target === m) fecharModalEditarPerfil();
-        });
-
-        /* ---------- submit ---------- */
-        document.getElementById('formEditarPerfil')?.addEventListener('submit', e => {
-            e.preventDefault();
-            const btn = document.getElementById('btnSalvarEditar');
-            btn.innerHTML = '⏳ Salvando...';
-            btn.disabled = true;
-
-            fetch('../conta/actions/editar_perfil.php', {
-                    method: 'POST',
-                    body: new FormData(e.target)
-                })
-                .then(r => r.json())
-                .then(data => {
-                    const box = document.getElementById('mensagemEditar');
-                    const txt = document.getElementById('textoMensagemEditar');
-                    box.style.display = 'block';
-                    document.getElementById('alertEditar').className = data.sucesso ? 'alert alert-success' : 'alert alert-danger';
-                    txt.textContent = (data.sucesso ? '✅ ' : '❌ ') + data.mensagem;
-                    if (data.sucesso) setTimeout(() => location.reload(), 2000);
-                    else {
-                        btn.innerHTML = '💾 Salvar Alterações';
-                        btn.disabled = false;
-                    }
-                })
-                .catch(() => {
-                    alert('❌ Erro ao salvar.');
-                    btn.innerHTML = '💾 Salvar Alterações';
-                    btn.disabled = false;
-                });
-        });
-        document.getElementById('btnAbrirModal')?.addEventListener('click', e => {
-    e.preventDefault();           // evita #
-    abrirModalEditarPerfil();     // sua função já existe
-});
         /* ---------- exclusão ---------- */
         function confirmarExclusaoConta() {
             if (!confirm('⚠️ ATENÇÃO!\n\nVocê tem certeza que deseja EXCLUIR sua conta?\n\n❌ Esta ação é IRREVERSÍVEL!\n❌ Todos os seus dados serão PERMANENTEMENTE apagados!\n\nDigite "CONFIRMAR" para prosseguir:')) return;
@@ -201,12 +143,8 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
 
             fetch('../conta/actions/excluir_conta.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id_usuario: <?= $idUsuario ?>
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id_usuario: <?= $idUsuario ?> })
                 })
                 .then(r => r.json())
                 .then(data => {
@@ -220,5 +158,4 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
     </script>
 
 </body>
-
 </html>
