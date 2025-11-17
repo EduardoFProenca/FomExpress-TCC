@@ -161,14 +161,22 @@ cd fomexpress-tcc
 ### 2. Configurar o Banco de Dados
 
 #### 2.1. Criar o Banco de Dados
-Abra o **MySQL Workbench** ou **phpMyAdmin** (`http://localhost/phpmyadmin`) e execute:
-
+1. Abra o **MySQL Workbench** ou **phpMyAdmin** (`http://localhost/phpmyadmin`) e execute:
+2. Crie o banco de dados:
 ```sql
 CREATE DATABASE fomexpress_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 
-#### 2.2. Importar a Estrutura Completa
+#### 2.2. Importar a Estrutura
 Execute o arquivo SQL:
+```sql
+SOURCE banco-de-dados/dbformexpress.sql;
+```
+
+Ou importe manualmente via phpMyAdmin.
+```sql
+CREATE DATABASE fomexpress_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
 
 ```sql
 USE fomexpress_db;
@@ -709,9 +717,8 @@ Este projeto foi desenvolvido como **Trabalho de Conclusão de Curso** para o Cu
 3. Desenvolver painel administrativo para lojistas
 4. Criar aplicativo mobile (React Native/Flutter)
 5. Integrar com serviços de entrega (Correios, Loggi, etc.)
-6. Implementar sistema de cupons e promoções
-7. Adicionar chat de suporte ao cliente
-
+6. Sistema de notificações
+7. Histórico de pedidos
 ---
 
 **Desenvolvido com ❤️ pela equipe FomExpress**
