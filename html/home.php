@@ -67,6 +67,8 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
                             <span><?= $emailUsuario ?></span>
                         </div>
                         <ul class="dropdown-menu">
+                            <li><a href="#" onclick="abrirModalEditarPerfil(); return false;"><i class="fa fa-edit"></i> Editar Perfil</a></li>
+                            <li class="dropdown-divider"></li>
                             <li><a href="#" onclick="confirmarExclusaoConta(); return false;" style="color:#ff4444;"><i class="fa fa-trash"></i> Excluir Conta</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="../conta/actions/logout.php"><i class="fa fa-sign-out"></i> Sair</a></li>
@@ -110,8 +112,52 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
         <p class="copyright">FomExpress Restaurante © 2025</p>
     </footer>
 
+    <!-- ===== MODAL EDITAR PERFIL ===== -->
+    <?php if ($isUserLoggedIn): ?>
+    <div id="modalEditarPerfil" class="modal-editar-perfil">
+        <div class="modal-conteudo-editar">
+            <div class="modal-header-editar">
+                <h3><i class="fa fa-user-circle"></i> Editar Perfil</h3>
+                <button class="fechar-modal-editar" onclick="fecharModalEditarPerfil()">&times;</button>
+            </div>
+            
+            <div class="modal-body-editar">
+                <!-- Mensagem de feedback -->
+                <div id="mensagemEditarPerfil" style="display: none; margin-bottom: 20px;">
+                    <div class="alert" role="alert" id="alertEditarPerfil">
+                        <span id="textoMensagemEditar"></span>
+                    </div>
+                </div>
+
+                <form id="formEditarPerfil">
+                    <div class="input-box-editar">
+                        <label for="editNome"><i class="fa fa-user"></i> Nome Completo</label>
+                        <input type="text" id="editNome" name="nome" value="<?= $nomeUsuario ?>" required>
+                    </div>
+
+                    <div class="input-box-editar">
+                        <label for="editEmail"><i class="fa fa-envelope"></i> E-mail</label>
+                        <input type="email" id="editEmail" name="email" value="<?= $emailUsuario ?>" required>
+                    </div>
+
+                    <div class="botoes-modal-editar">
+                        <button type="button" class="btn-cancelar-editar" onclick="fecharModalEditarPerfil()">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn-salvar-editar" id="btnSalvarPerfil">
+                            <i class="fa fa-check"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <script>
-        /* ---------- toggle dropdown ---------- */
+        /* ========================================= */
+        /* TOGGLE DROPDOWN DO USUÁRIO                */
+        /* ========================================= */
         const userCircle = document.getElementById('userCircle');
         const userDropdownGuest = document.getElementById('userDropdownGuest');
         const userDropdownLogged = document.getElementById('userDropdownLogged');
@@ -128,6 +174,7 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
             }
         });
 
+        // Fechar dropdown ao clicar fora
         document.addEventListener('click', e => {
             if (!e.target.closest('.user-profile')) {
                 userDropdownGuest?.classList.remove('active');
@@ -135,25 +182,125 @@ $idUsuario      = $isUserLoggedIn ? (int)$_SESSION['usuario_id'] : 0;
             }
         });
 
-        /* ---------- exclusão ---------- */
+        /* ========================================= */
+        /* MODAL EDITAR PERFIL                       */
+        /* ========================================= */
+        function abrirModalEditarPerfil() {
+            document.getElementById('modalEditarPerfil').style.display = 'block';
+            document.getElementById('mensagemEditarPerfil').style.display = 'none';
+            userDropdownLogged?.classList.remove('active');
+        }
+
+        function fecharModalEditarPerfil() {
+            document.getElementById('modalEditarPerfil').style.display = 'none';
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalEditarPerfil');
+            if (event.target === modal) {
+                fecharModalEditarPerfil();
+            }
+        }
+
+        /* ========================================= */
+        /* PROCESSAR EDIÇÃO DO PERFIL (AJAX)         */
+        /* ========================================= */
+        document.getElementById('formEditarPerfil')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btnSalvar = document.getElementById('btnSalvarPerfil');
+            const mensagemDiv = document.getElementById('mensagemEditarPerfil');
+            const alertDiv = document.getElementById('alertEditarPerfil');
+            const textoMensagem = document.getElementById('textoMensagemEditar');
+            
+            // Visual feedback
+            btnSalvar.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Salvando...';
+            btnSalvar.disabled = true;
+            mensagemDiv.style.display = 'none';
+            
+            // Dados do formulário
+            const formData = new FormData(this);
+            formData.append('id_usuario', <?= $idUsuario ?>);
+            
+            // Envia via AJAX
+            fetch('../conta/actions/editar_perfil.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                mensagemDiv.style.display = 'block';
+                
+                if (data.sucesso) {
+                    alertDiv.className = 'alert alert-success';
+                    textoMensagem.innerHTML = '✅ ' + data.mensagem;
+                    
+                    // Atualizar informações no dropdown
+                    document.querySelector('.dropdown-header p').textContent = data.novo_nome;
+                    document.querySelector('.dropdown-header span').textContent = data.novo_email;
+                    
+                    // Atualizar campos do formulário
+                    document.getElementById('editNome').value = data.novo_nome;
+                    document.getElementById('editEmail').value = data.novo_email;
+                    
+                    // Fechar modal após 2 segundos
+                    setTimeout(() => {
+                        fecharModalEditarPerfil();
+                    }, 2000);
+                } else {
+                    alertDiv.className = 'alert alert-danger';
+                    textoMensagem.innerHTML = '❌ ' + data.mensagem;
+                }
+                
+                btnSalvar.innerHTML = '<i class="fa fa-check"></i> Salvar Alterações';
+                btnSalvar.disabled = false;
+            })
+            .catch(error => {
+                mensagemDiv.style.display = 'block';
+                alertDiv.className = 'alert alert-danger';
+                textoMensagem.innerHTML = '❌ Erro ao salvar. Tente novamente.';
+                
+                btnSalvar.innerHTML = '<i class="fa fa-check"></i> Salvar Alterações';
+                btnSalvar.disabled = false;
+                
+                console.error('Erro:', error);
+            });
+        });
+
+        /* ========================================= */
+        /* EXCLUIR CONTA                             */
+        /* ========================================= */
         function confirmarExclusaoConta() {
-            if (!confirm('⚠️ ATENÇÃO!\n\nVocê tem certeza que deseja EXCLUIR sua conta?\n\n❌ Esta ação é IRREVERSÍVEL!\n❌ Todos os seus dados serão PERMANENTEMENTE apagados!\n\nDigite "CONFIRMAR" para prosseguir:')) return;
+            if (!confirm('⚠️ ATENÇÃO!\n\nVocê tem certeza que deseja EXCLUIR sua conta?\n\n❌ Esta ação é IRREVERSÍVEL!\n❌ Todos os seus dados serão PERMANENTEMENTE apagados!\n\nDeseja continuar?')) {
+                return;
+            }
+            
             const texto = prompt('Digite "CONFIRMAR" em letras maiúsculas para excluir sua conta:');
-            if (texto !== 'CONFIRMAR') return alert('❌ Exclusão cancelada. Texto incorreto.');
+            
+            if (texto !== 'CONFIRMAR') {
+                alert('❌ Exclusão cancelada. Texto incorreto.');
+                return;
+            }
 
             fetch('../conta/actions/excluir_conta.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id_usuario: <?= $idUsuario ?> })
-                })
-                .then(r => r.json())
-                .then(data => {
-                    if (data.sucesso) {
-                        alert('✅ ' + data.mensagem);
-                        window.location.href = '../conta/login.php';
-                    } else alert('❌ ' + data.mensagem);
-                })
-                .catch(() => alert('❌ Erro ao excluir conta. Tente novamente.'));
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id_usuario: <?= $idUsuario ?> })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.sucesso) {
+                    alert('✅ ' + data.mensagem);
+                    window.location.href = '../conta/login.php';
+                } else {
+                    alert('❌ ' + data.mensagem);
+                }
+            })
+            .catch(error => {
+                alert('❌ Erro ao excluir conta. Tente novamente.');
+                console.error('Erro:', error);
+            });
         }
     </script>
 
